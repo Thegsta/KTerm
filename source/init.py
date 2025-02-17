@@ -1,4 +1,4 @@
-from KTerm.scoure.settings import user_settings_kterm
+from settings import user_settings_kterm
 
 import getpass
 import time
@@ -49,13 +49,26 @@ def command():
             command()
     elif user == "credits":
         print(f"Made and published by {setbold}Thegsta{endbold}")
-        print(f"and {setbold}TheAxoltolLord{endbold} helped with some code")
+        print(f"and {setbold}TheAxolotlLord{endbold} helped with code")
         command()
     elif user == "clear":
         os.system('cls||clear')
         command()
-    elif user == "logout":    
-            login()
+    elif user == "logout":
+        os.system('cls||clear')
+        login()
+    elif user == "help":
+        print("Commands:")
+        print("exit - Exit the terminal")
+        print("credits - Show the credits")
+        print("clear - Clear the terminal")
+        print("logout - Logout of the terminal")
+        print("help - Show this message")
+        command()
+    elif user == "immaeataleek":
+        print("\033[34mHiding in your wifi!\033[0m")
+
+        command()
     else:
         print("Command not found")
         command()
