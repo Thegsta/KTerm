@@ -35,9 +35,24 @@ def main():
     print(f"Hello {setbold}{loged_user}{endbold}")
     command()
 
-def command():
+def root_tools():
     user = input("> ")
     if user == "exit":
+        user = input("Are you sure? (Y/N) ").upper()
+        if user == "Y":
+            command()
+        elif user == "N":
+            root_tools()
+        else:
+            print("Command not found")
+            root_tools()
+    else:
+        print("Command not found")
+        root_tools()
+
+def command():
+    command_input = input("> ")
+    if command_input == "exit":
         user = input("Are you sure? (Y/N) ").upper()
         if user == "Y":
             os.system('cls||clear')
@@ -47,17 +62,17 @@ def command():
         else:
             print("Command not found")
             command()
-    elif user == "credits":
+    elif command_input == "credits":
         print(f"Made and published by {setbold}Thegsta{endbold}")
         print(f"and {setbold}TheAxolotlLord{endbold} helped with code")
         command()
-    elif user == "clear":
+    elif command_input == "clear":
         os.system('cls||clear')
         command()
-    elif user == "logout":
+    elif command_input == "logout":
         os.system('cls||clear')
         login()
-    elif user == "help":
+    elif command_input == "help":
         print("Commands:")
         print("exit - Exit the terminal")
         print("credits - Show the credits")
@@ -65,10 +80,16 @@ def command():
         print("logout - Logout of the terminal")
         print("help - Show this message")
         command()
-    elif user == "immaeataleek":
+    elif command_input == "immaeataleek":
         print("\033[34mHiding in your wifi!\033[0m")
-
         command()
+    elif command_input == "root-tools":
+        if loged_user and any(user['username'] == loged_user and user['AL'] == 3 for user in user_settings_kterm):
+            print("Root tools enabled")
+            root_tools()
+        else:
+            print("You need to be root to use this command")
+            command()
     else:
         print("Command not found")
         command()
