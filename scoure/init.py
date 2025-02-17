@@ -1,4 +1,4 @@
-from settings import user_settings_kterm
+from Python.KTerm.scoure.settings import user_settings_kterm
 
 import getpass
 import time
